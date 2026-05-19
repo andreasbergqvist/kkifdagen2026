@@ -367,23 +367,23 @@ function SchedulePage() {
         </div>
 
         {groupFilter && groupTeams.length > 0 ? (
-          <section className="rounded-2xl border border-sky-900/10 bg-white p-4 shadow-[0_10px_30px_rgba(11,63,119,0.06)]">
+          <section className="schedule-group-summary rounded-2xl border border-sky-900/10 bg-white p-4 shadow-[0_10px_30px_rgba(11,63,119,0.06)]">
             <div className="flex flex-wrap items-end justify-between gap-3">
               <div>
                 <h3 className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky-900/70">
                   Lag i grupp {groupFilter}
                 </h3>
-                <p className="mt-1 text-sm text-sky-950/70">
+                <p className="schedule-group-count mt-1 text-sm text-sky-950/70">
                   {groupTeams.length} lag i vald grupp
                 </p>
               </div>
             </div>
-            <div className="mt-3 flex flex-wrap gap-2">
+            <div className="schedule-group-teams mt-3 flex flex-wrap gap-2">
               {groupTeams.map((team) => (
                 <Link
                   key={team}
                   to={formatTeamPath(year, team)}
-                  className="rounded-full border border-sky-900/15 bg-sky-50 px-3 py-2 text-sm font-semibold text-sky-900 transition hover:border-sky-900/30 hover:bg-amber-100"
+                  className="schedule-group-team rounded-full border border-sky-900/15 bg-sky-50 px-3 py-2 text-sm font-semibold text-sky-900 transition hover:border-sky-900/30 hover:bg-amber-100"
                 >
                   {team}
                 </Link>

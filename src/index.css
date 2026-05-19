@@ -33,7 +33,7 @@
 
 @media print {
   @page {
-    size: A4 landscape;
+    size: A4 portrait;
     margin: 12mm;
   }
 
@@ -80,8 +80,7 @@
   }
 
   .schedule-print-meta {
-    display: block !important;
-    margin-top: 0.35rem;
+    display: none !important;
   }
 
   .schedule-summary {
@@ -89,6 +88,30 @@
     background: #fff;
     color: #0f172a;
     padding: 0.35rem 0.75rem;
+  }
+
+  .schedule-group-summary {
+    border: 1px solid #cbd5e1;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0.65rem 0.8rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .schedule-group-count {
+    display: none !important;
+  }
+
+  .schedule-group-teams {
+    gap: 0.35rem;
+  }
+
+  .schedule-group-team {
+    border-color: #cbd5e1;
+    background: #fff;
+    padding: 0.2rem 0.5rem;
+    font-size: 9pt;
   }
 
   .schedule-table-wrap {
