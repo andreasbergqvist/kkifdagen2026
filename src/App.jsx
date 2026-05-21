@@ -70,7 +70,6 @@ function Header() {
         <nav className="site-navigation flex items-center gap-1 rounded-full border border-sky-950/10 bg-white p-1 text-xs font-semibold sm:text-sm">
           <NavItem to="/">Start</NavItem>
           <NavItem to="/spelschema">Spelschema</NavItem>
-          <NavItem to="/regler">Regler</NavItem>
         </nav>
       </div>
     </header>
@@ -107,32 +106,30 @@ function StartPage() {
   return (
     <PageShell>
       <section className="overflow-hidden rounded-3xl border border-sky-950/10 bg-gradient-to-br from-white via-sky-50 to-amber-50 p-5 shadow-[0_20px_45px_rgba(11,63,119,0.12)] sm:p-8">
-        <p className="mb-4 inline-flex rounded-full border border-sky-900/15 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.2em] text-sky-900">
-          Välkommen
-        </p>
         <h2 className="font-display text-4xl font-black leading-tight text-sky-950 sm:text-5xl">
           KKIF-dagen 2026
         </h2>
         <p className="mt-4 max-w-2xl text-lg text-sky-950/75">
-          En heldag med interncup, glädje och mycket fotboll. Här hittar du all
-          information om upplägg, regler och spelschema.
+          Ta med hela familjen och kom ner till Klarebergsvallen och fira
+          KKIF-dagen tillsammans. Det blir en fin dag där vi får se alla våra
+          lag möta varandra.
         </p>
 
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           <InfoCard title="Datum">Lördag 2026-06-06</InfoCard>
           <InfoCard title="Plats">Klarebergsvallen</InfoCard>
-          <InfoCard title="Starttid">09.30</InfoCard>
+          <InfoCard title="Starttid">09:30</InfoCard>
         </div>
 
-        <div className="mt-6 rounded-2xl border border-sky-900/10 bg-white/90 p-5">
+        <div className="mt-6 rounded-2xl border border-sky-900/10 bg-white/90 p-5 print:break-after-page">
           <h3 className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky-900/70">
             Dagens innehåll
           </h3>
           <ul className="mt-3 space-y-2 text-sky-950/85">
-            <li>9.30 Uppvisningsmatch med våra yngsta spelare</li>
-            <li>10.00 Turneringen startar</li>
+            <li>09:30 Uppvisningsmatch med våra yngsta spelare</li>
+            <li>10:00 Turneringen startar</li>
             <li>Café och grillförsäljning</li>
-            <li>Försäljningstält med Klubbhuset</li>
+            <li>Merchbord</li>
             <li>Bytesbord med klubbkläder och fotbollsskor</li>
             <li>Skjuta-hårt-tävling</li>
             <li>Tipspromenad</li>
@@ -152,6 +149,43 @@ function StartPage() {
             <li>Plan 6 - Konstgräs 7 mot 7 planen (7 mot 7 mål)</li>
           </ul>
         </div>
+
+        <div className="mt-6 rounded-2xl border border-sky-900/10 bg-white/90 p-5">
+          <h2 className="font-display text-2xl font-black text-sky-950">
+            Regler
+          </h2>
+
+          <ol className="mt-4 space-y-3 text-sky-950/85">
+            <li>
+              Matchtid 10 min + straffar. Alla matcher startar på utsatt tid.
+            </li>
+            <li>
+              Gruppspel avgörs enligt poäng: vinst 3, oavgjort 1, förlust 0.
+            </li>
+            <li>
+              Vid lika poäng gäller målskillnad, därefter flest gjorda mål,
+              sedan lottning.
+            </li>
+            <li>
+              Efter spelet får man lika många straffar som man ligger under med.
+              Därefter får man lika många straffar som det skiljer i ålder. Herr-
+              och damlag räknas som 18 år.
+            </li>
+            <li>
+              Schysst spel, respekt för domare och motståndare gäller hela dagen.
+            </li>
+          </ol>
+
+          <div className="mt-4 rounded-xl border border-sky-900/10 bg-sky-50/60 p-4 text-sky-950/85">
+            <h3 className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky-900/70">
+              Exempel
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed">
+              Exempel: P12 möter P18. P12 vinner med 3-1. Då får P18 2 straffar
+              för att de låg under, och 6 straffar för åldersskillnad.
+            </p>
+          </div>
+        </div>
       </section>
     </PageShell>
   );
@@ -165,49 +199,6 @@ function InfoCard({ title, children }) {
       </h3>
       <p className="mt-2 text-lg font-bold text-sky-950">{children}</p>
     </article>
-  );
-}
-
-function RulesPage() {
-  return (
-    <PageShell>
-      <section className="rounded-3xl border border-sky-950/10 bg-white p-5 shadow-[0_20px_45px_rgba(11,63,119,0.08)] sm:p-8">
-        <h2 className="font-display text-3xl font-black text-sky-950">
-          Regler
-        </h2>
-
-        <ol className="mt-6 space-y-3 text-sky-950/85">
-          <li>
-            Matchtid 10 min + straffar. Alla matcher startar på utsatt tid.
-          </li>
-          <li>
-            Gruppspel avgörs enligt poäng: vinst 3, oavgjort 1, förlust 0.
-          </li>
-          <li>
-            Vid lika poäng gäller målskillnad, därefter flest gjorda mål, sedan
-            lottning.
-          </li>
-          <li>
-            Efter spelet får man lika många straffar som man ligger under med.
-            Därefter får man lika många straffar som det skiljer i ålder. Herr-
-            och damlag räknas som 18 år.
-          </li>
-          <li>
-            Schysst spel, respekt för domare och motståndare gäller hela dagen.
-          </li>
-        </ol>
-
-        <div className="mt-6 rounded-2xl border border-sky-900/10 bg-sky-50/60 p-4 text-sky-950/85">
-          <h3 className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky-900/70">
-            Exempel
-          </h3>
-          <p className="mt-2 text-sm leading-relaxed">
-            Exempel: P12 möter P18. P12 vinner med 3-1. Då får P18 2 straffar
-            för att de låg under, och 6 straffar för åldersskillnad.
-          </p>
-        </div>
-      </section>
-    </PageShell>
   );
 }
 
@@ -557,7 +548,6 @@ export default function App() {
       <Header />
       <Routes>
         <Route path="/" element={<StartPage />} />
-        <Route path="/regler" element={<RulesPage />} />
         <Route
           path="/spelschema"
           element={<Navigate to={`/spelschema/${defaultYear}`} replace />}
