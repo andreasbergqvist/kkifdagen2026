@@ -459,7 +459,7 @@ function SchedulePage() {
                         <Link
                           to={formatTeamPath(year, match.team1)}
                           aria-label={`Lag 1: ${match.team1}`}
-                          className="block font-semibold text-sky-900 hover:text-sky-700 truncate"
+                          className="block sm:inline font-semibold text-sky-900 hover:text-sky-700 truncate"
                         >
                           <span className="sm:hidden">
                             {formatMobileTeamName(match.team1)}
@@ -467,7 +467,7 @@ function SchedulePage() {
                           <span className="hidden sm:inline">
                             {match.team1}
                           </span>{' '}
-                          <span className="font-normal">vs</span>
+                          <span className="font-normal">vs </span>
                         </Link>
                       ) : (
                         <span className="block text-sky-900/45">-</span>
@@ -476,7 +476,7 @@ function SchedulePage() {
                         <Link
                           to={formatTeamPath(year, match.team2)}
                           aria-label={`Lag 2: ${match.team2}`}
-                          className="block font-semibold text-sky-900 hover:text-sky-700"
+                          className="block sm:inline font-semibold text-sky-900 hover:text-sky-700"
                         >
                           <span className="sm:hidden">
                             {formatMobileTeamName(match.team2)}

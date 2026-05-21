@@ -166,9 +166,4 @@
     color: inherit !important;
     text-decoration: none;
   }
-
-  .schedule-table tbody tr:nth-child(18n) {
-    page-break-after: always;
-    break-after: page;
-  }
 }
