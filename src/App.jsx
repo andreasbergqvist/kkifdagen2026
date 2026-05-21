@@ -285,6 +285,25 @@ function SchedulePage() {
     );
   }, [groupFilter, matches]);
 
+  const groupsWithTeams = useMemo(() => {
+    if (!matches) return [];
+
+    return groups
+      .filter((group) => group !== 'Slutspel')
+      .map((group) => ({
+        group,
+        teams: sortTeamNames(
+          [
+            ...new Set(
+              matches
+                .filter((match) => match.group === group)
+                .flatMap((match) => [match.team1, match.team2]),
+            ),
+          ].filter(isNamedTeam),
+        ),
+      }));
+  }, [groups, matches]);
+
   const filteredMatches = useMemo(() => {
     if (!matches) return [];
 
@@ -322,7 +341,8 @@ function SchedulePage() {
         <div className="schedule-header flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="schedule-title font-display text-3xl font-black text-sky-950">
-              Spelschema {year}
+              <span className="hidden print:inline">KKIF-dagen </span>Spelschema{' '}
+              {year}
             </h2>
             <p className="schedule-print-meta hidden text-sm text-sky-950">
               {activeFilters.length > 0
@@ -330,19 +350,21 @@ function SchedulePage() {
                 : 'Alla matcher'}
             </p>
           </div>
-          <div className="schedule-summary rounded-full border border-sky-900/15 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-900">
-            {filteredMatches.length} / {matches.length} matcher
+          <div className="schedule-summary rounded-full border border-sky-900/15 bg-sky-50 px-4 py-2 text-sm font-semibold text-sky-900 flex items-center gap-3">
+            <span>
+              {filteredMatches.length} / {matches.length} matcher
+            </span>
+            <span className="hidden sm:inline text-sky-900/20">|</span>
+            <Link
+              to={`/spelschema/${year}`}
+              className="text-xs font-semibold text-sky-900/60 hover:text-sky-900 underline-offset-2 hover:underline"
+            >
+              Rensa filter
+            </Link>
           </div>
         </div>
 
         <div className="schedule-filters space-y-3 rounded-2xl border border-sky-900/10 bg-sky-50/60 p-3 sm:p-4">
-          <FilterRow
-            title="Grupp"
-            items={groups}
-            selected={groupFilter}
-            formatPath={(item) => formatGroupPath(year, item)}
-            year={year}
-          />
           <FilterRow
             title="Plan"
             items={plans}
@@ -351,19 +373,6 @@ function SchedulePage() {
             prefix="Plan "
             year={year}
           />
-          <FilterRow
-            title="Lag"
-            items={teams}
-            selected={teamFilter}
-            formatPath={(item) => formatTeamPath(year, item)}
-            year={year}
-          />
-          <Link
-            to={`/spelschema/${year}`}
-            className="inline-block rounded-full border border-sky-900/20 bg-white px-4 py-2 text-sm font-semibold text-sky-900 transition hover:bg-amber-100"
-          >
-            Rensa filter
-          </Link>
         </div>
 
         {groupFilter && groupTeams.length > 0 ? (
@@ -389,6 +398,38 @@ function SchedulePage() {
                 </Link>
               ))}
             </div>
+          </section>
+        ) : !groupFilter &&
+          !teamFilter &&
+          !planFilter &&
+          groupsWithTeams.length > 0 ? (
+          <section className="schedule-all-groups space-y-4">
+            {groupsWithTeams.map(({ group, teams }) => (
+              <div
+                key={group}
+                className="rounded-2xl border border-sky-900/10 bg-white p-4 shadow-[0_10px_30px_rgba(11,63,119,0.06)] md:flex md:items-center md:gap-4"
+              >
+                <h3 className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky-900/70 md:shrink-0 md:self-center">
+                  <Link
+                    to={formatGroupPath(year, group)}
+                    className="hover:text-sky-700 underline-offset-2 hover:underline"
+                  >
+                    {group === 'Slutspel' ? '🏆 Slutspel' : `Grupp ${group}`}
+                  </Link>
+                </h3>
+                <div className="mt-3 flex flex-wrap gap-2 md:mt-0">
+                  {teams.map((team) => (
+                    <Link
+                      key={team}
+                      to={formatTeamPath(year, team)}
+                      className="rounded-full border border-sky-900/15 bg-sky-50 px-3 py-2 text-sm font-semibold text-sky-900 transition hover:border-sky-900/30 hover:bg-amber-100"
+                    >
+                      {team}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </section>
         ) : null}
 

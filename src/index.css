@@ -56,9 +56,22 @@
     background: #fff !important;
   }
 
+  header {
+    display: none !important;
+  }
+
   .site-navigation,
   .schedule-filters {
     display: none !important;
+  }
+
+  .schedule-summary {
+    display: none !important;
+  }
+
+  .schedule-all-groups {
+    page-break-after: always;
+    break-after: page;
   }
 
   .schedule-page {
@@ -152,5 +165,10 @@
   .schedule-table a {
     color: inherit !important;
     text-decoration: none;
+  }
+
+  .schedule-table tbody tr:nth-child(18n) {
+    page-break-after: always;
+    break-after: page;
   }
 }
