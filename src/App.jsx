@@ -168,11 +168,12 @@ function StartPage() {
             </li>
             <li>
               Efter spelet får man lika många straffar som man ligger under med.
-              Därefter får man lika många straffar som det skiljer i ålder. Herr-
-              och damlag räknas som 18 år.
+              Därefter får man lika många straffar som det skiljer i ålder.
+              Herr- och damlag räknas som 18 år.
             </li>
             <li>
-              Schysst spel, respekt för domare och motståndare gäller hela dagen.
+              Schysst spel, respekt för domare och motståndare gäller hela
+              dagen.
             </li>
           </ol>
 
