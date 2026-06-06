@@ -82,6 +82,14 @@
     padding: 0;
   }
 
+  .start-page {
+    border: none !important;
+    border-radius: 0;
+    box-shadow: none !important;
+    padding: 0 !important;
+    background: none !important;
+  }
+
   .schedule-header {
     align-items: start;
     gap: 0.5rem;
@@ -165,5 +173,64 @@
   .schedule-table a {
     color: inherit !important;
     text-decoration: none;
+  }
+
+  .schedule-group-standings {
+    border: 1px solid #cbd5e1;
+    margin-bottom: 1rem;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .schedule-group-standings table {
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 9pt;
+  }
+
+  .schedule-group-standings th,
+  .schedule-group-standings td {
+    border: 1px solid #cbd5e1;
+    padding: 0.35rem 0.5rem;
+  }
+
+  .schedule-group-standings th {
+    background: #0f3b72 !important;
+    color: #fff !important;
+    font-size: 8pt;
+    text-align: center;
+  }
+
+  .schedule-group-standings td:first-child {
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .print-result-input {
+    border: none;
+    border-bottom: 1px solid #94a3b8;
+    width: 2.2rem;
+    text-align: center;
+    background: transparent;
+    font-size: 9pt;
+    color: #111827;
+    outline: none;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .print-result-score {
+    border: none;
+    border-bottom: 1px solid #94a3b8;
+    width: 1.8rem;
+    text-align: center;
+    background: transparent;
+    font-size: 9pt;
+    color: #111827;
+    outline: none;
+  }
+
+  .print-result-score::placeholder {
+    color: transparent;
   }
 }

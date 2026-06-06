@@ -105,7 +105,7 @@ function PageShell({ children }) {
 function StartPage() {
   return (
     <PageShell>
-      <section className="overflow-hidden rounded-3xl border border-sky-950/10 bg-gradient-to-br from-white via-sky-50 to-amber-50 p-5 shadow-[0_20px_45px_rgba(11,63,119,0.12)] sm:p-8">
+      <section className="start-page overflow-hidden rounded-3xl border border-sky-950/10 bg-gradient-to-br from-white via-sky-50 to-amber-50 p-5 shadow-[0_20px_45px_rgba(11,63,119,0.12)] sm:p-8">
         <h2 className="font-display text-4xl font-black leading-tight text-sky-950 sm:text-5xl">
           KKIF-dagen 2026
         </h2>
@@ -425,12 +425,60 @@ function SchedulePage() {
           </section>
         ) : null}
 
+        {groupFilter && (
+          <div className="schedule-group-standings hidden print:block">
+            <h3 className="font-display text-2xl font-black text-sky-950 mb-3">
+              Grupp {groupFilter} – Ställning
+            </h3>
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="bg-sky-900 text-white">
+                  <th className="p-2 font-semibold">Lag</th>
+                  <th className="p-2 font-semibold text-center w-8">M</th>
+                  <th className="p-2 font-semibold text-center w-8">V</th>
+                  <th className="p-2 font-semibold text-center w-8">O</th>
+                  <th className="p-2 font-semibold text-center w-8">F</th>
+                  <th className="p-2 font-semibold text-center w-10">GM</th>
+                  <th className="p-2 font-semibold text-center w-10">IM</th>
+                  <th className="p-2 font-semibold text-center w-10">+/-</th>
+                  <th className="p-2 font-semibold text-center w-8">P</th>
+                </tr>
+              </thead>
+              <tbody>
+                {groupTeams.map((team, idx) => (
+                  <tr key={team} className="border-b border-slate-300">
+                    <td className="p-1.5 font-semibold text-sky-950">{team}</td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center"></td>
+                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+        {planFilter && (
+          <h2 className="schedule-plan-title hidden print:block font-display text-3xl font-black text-sky-950">
+            Plan {planFilter}
+          </h2>
+        )}
+
         <div className="schedule-table-wrap overflow-auto rounded-2xl border border-sky-900/10">
           <table className="schedule-table min-w-full text-left text-xs sm:text-sm">
             <thead className="bg-sky-900 text-xs uppercase tracking-[0.08em] text-sky-50">
               <tr>
                 <th className="px-2 py-3 sm:px-4">Tid</th>
                 <th className="px-2 py-3 sm:px-4">Lag</th>
+                {groupFilter && (
+                  <th className="px-2 py-3 sm:px-4 hidden print:table-cell">
+                    Resultat
+                  </th>
+                )}
                 <th className="px-2 py-3 sm:px-4">Plan</th>
                 <th className="px-2 py-3 sm:px-4">Grupp</th>
                 <th className="px-2 py-3 sm:px-4">Typ</th>
@@ -482,6 +530,11 @@ function SchedulePage() {
                       )}
                     </div>
                   </td>
+                  {groupFilter && (
+                    <td className="px-2 py-2 sm:px-4 sm:py-3 hidden print:table-cell align-middle whitespace-nowrap">
+                      <input className="print-result-score" /> – <input className="print-result-score" />
+                    </td>
+                  )}
                   <td className="px-2 py-2 sm:px-4 sm:py-3">
                     <Link
                       to={formatPlanPath(year, String(match.planNr))}
