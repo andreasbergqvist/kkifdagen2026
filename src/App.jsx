@@ -166,10 +166,11 @@ function StartPage() {
               Vid lika poäng gäller målskillnad, därefter flest gjorda mål,
               sedan lottning.
             </li>
+            <li>Vinner det yngre laget matchen, så blir det resultatet.</li>
             <li>
-              Efter spelet får man lika många straffar som man ligger under med.
-              Därefter får man lika många straffar som det skiljer i ålder.
-              Herr- och damlag räknas som 18 år.
+              Vinner det äldre laget, får det yngre lika många straffar som man
+              ligger under med. Därefter får man lika många straffar som det
+              skiljer i ålder. Herr- och damlag räknas som 18 år.
             </li>
             <li>
               Schysst spel, respekt för domare och motståndare gäller hela
@@ -448,14 +449,28 @@ function SchedulePage() {
                 {groupTeams.map((team, idx) => (
                   <tr key={team} className="border-b border-slate-300">
                     <td className="p-1.5 font-semibold text-sky-950">{team}</td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
                     <td className="p-1.5 text-center"></td>
-                    <td className="p-1.5 text-center"><input className="print-result-input" /></td>
+                    <td className="p-1.5 text-center">
+                      <input className="print-result-input" />
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -532,7 +547,8 @@ function SchedulePage() {
                   </td>
                   {groupFilter && (
                     <td className="px-2 py-2 sm:px-4 sm:py-3 hidden print:table-cell align-middle whitespace-nowrap">
-                      <input className="print-result-score" /> – <input className="print-result-score" />
+                      <input className="print-result-score" /> –{' '}
+                      <input className="print-result-score" />
                     </td>
                   )}
                   <td className="px-2 py-2 sm:px-4 sm:py-3">
